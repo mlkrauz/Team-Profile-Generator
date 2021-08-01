@@ -92,3 +92,5 @@ function metaValidator(validatorObj) {
     
     return {validatorLength, validatorKeyValuePairs}
 }
+
+module.exports = { validateArgs }
