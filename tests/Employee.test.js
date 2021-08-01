@@ -46,7 +46,7 @@ describe('Employee', () => {
 
             const employee = new Employee(name, id, email)
             
-            expect(employee.getName).toEqual(name);
+            expect(employee.getName()).toEqual(name);
         });
     });
 
@@ -58,7 +58,7 @@ describe('Employee', () => {
 
             const employee = new Employee(name, id, email)
             
-            expect(employee.getID).toEqual(id);
+            expect(employee.getID()).toEqual(id);
         });
     });
 
@@ -70,7 +70,7 @@ describe('Employee', () => {
 
             const employee = new Employee(name, id, email)
             
-            expect(employee.getEmail).toEqual(email);
+            expect(employee.getEmail()).toEqual(email);
         });
     });
 
@@ -82,7 +82,7 @@ describe('Employee', () => {
 
             const employee = new Employee(name, id, email)
             
-            expect(employee.getRole).toEqual('Employee')
+            expect(employee.getRole()).toEqual('Employee')
         });
     });
 });
