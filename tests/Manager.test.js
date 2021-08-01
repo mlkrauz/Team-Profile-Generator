@@ -19,17 +19,29 @@ describe('Manager', () => {
             expect(cb4).toThrowError(err);
         });
 
+        it("should accept strings that can be parsed to numbers for 'officeNumber'.", () => {
+            const name = 'Jane Doe';
+            const id = 1;
+            const email = 'janeDoe@fakemail.com';
+            const officeNumber1 = 3;
+            const officeNumber2 = '3';
+
+            const manager1 = new Employee(name, id, email, officeNumber1);
+            const manager2 = new Employee(name, id, email, officeNumber2);
+            
+            expect(typeof manager1.officeNumber).toEqual('number');
+            expect(typeof manager2.officeNumber).toEqual('number');
+        }); 
+        
         it("should throw an error on incorrectly typed argument 'officeNumber'", () => {
             const name = 'Jane Doe';
             const id = 1;
             const email = 'janeDoe@fakemail.com';
             const officeNumber = 3;
             
-            const manager = new Manager(name, id, email, officeNumber);
             const cb1 = () => new Manager(name, id, email, false);
-            const err = new Error("Expected argument 'officeNumber' to be a string.");
+            const err = new Error("Expected argument 'officeNumber' to be a number or a string that can be parsed to a number.");
 
-            expect(typeof manager.officeNumber).toEqual('number');
             expect(cb1).toThrowError(err);
         });
     });

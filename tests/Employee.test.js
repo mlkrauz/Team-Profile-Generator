@@ -15,23 +15,32 @@ describe('Employee', () => {
             expect(cb2).toThrowError(err);
             expect(cb3).toThrowError(err);
         });
+        
+        it('should accept strings that can be parsed to numbers for args of type number.', () => {
+            const name = 'Jane Doe';
+            const id1 = 1;
+            const id2 = '1'
+            const email = 'janeDoe@fakemail.com';
 
-        it('should throw an error on any incorrectly typed arguments', () => {
+            const employee1 = new Employee(name, id1, email);
+            const employee2 = new Employee(name, id2, email);
+            
+            expect(typeof employee1.id).toEqual('number');
+            expect(typeof employee2.id).toEqual('number');
+        });  
+        
+        it('should throw an error on any incorrectly typed arguments.', () => {
             const name = 'Jane Doe';
             const id = 1;
             const email = 'janeDoe@fakemail.com';
             
-            const employee = new Employee(name, id, email);
             const cb1 = () => new Employee(false, id, email);
             const cb2 = () => new Employee(name, false, email);
             const cb3 = () => new Employee(name, id, false);
             const err1 = new Error("Expected argument 'name' to be a string.");
-            const err2 = new Error("Expected argument 'id' to be a number.");
+            const err2 = new Error("Expected argument 'id' to be a number or a string that can be parsed to a number.");
             const err3 = new Error("Expected argument 'email' to be a string.");
 
-            expect(typeof employee.name).toEqual('string');
-            expect(typeof employee.id).toEqual('number');
-            expect(typeof employee.email).toEqual('string');
             expect(cb1).toThrowError(err1);
             expect(cb2).toThrowError(err2);
             expect(cb3).toThrowError(err3);
