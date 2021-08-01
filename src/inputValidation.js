@@ -21,7 +21,7 @@ function validateArgs(validatorObj, args) {
             case 1:
                 throw new Error(`Expected parameters: ${validatorKeyValuePairs[0][0]}.`)
             default:
-                let errorArgsString;
+                let errorArgsString = '';
 
                 //loop and get comma separated string of all but the last args
                 for (let i = 0; i < validatorLength-1; i++) {
@@ -38,6 +38,12 @@ function validateArgs(validatorObj, args) {
         const currentType = validatorKeyValuePairs[i][1];
         const currentArg = args[i];
 
+        const handleDefault = () => {
+            if (typeof currentArg !== currentType) {
+                throw new Error(`Expected argument '${currentKey}' to be a ${currentType}.`);
+            }
+        }
+
         switch (currentType) {
             case 'number':
                 if (typeof currentArg === 'string') {
@@ -49,18 +55,21 @@ function validateArgs(validatorObj, args) {
 
                     //We didn't throw an error on NaN, so replace the string value with our parsed number
                     args[i] = parsed
+                } else {
+                    if (typeof currentArg !== currentType) {
+                        throw new Error(`Expected argument '${currentKey}' to be a number or a string that can be parsed to a number.`);
+                    }
                 }
                 break;
             default:
-                if (typeof currentArg !== currentType) {
-                    throw new Error(`Expected argument '${currentKey}' to be a ${currentType}.`);
-                }
+                handleDefault()
                 break;
         }
 
-        //All checks passed without throwing an error. Return our (possibly cleaned) args.
-        return args;
     }
+
+    //All checks passed without throwing an error. Return our (possibly cleaned) args.
+    return args;
 }
 
 /**

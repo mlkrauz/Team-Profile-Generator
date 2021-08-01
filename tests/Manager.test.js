@@ -26,8 +26,8 @@ describe('Manager', () => {
             const officeNumber1 = 3;
             const officeNumber2 = '3';
 
-            const manager1 = new Employee(name, id, email, officeNumber1);
-            const manager2 = new Employee(name, id, email, officeNumber2);
+            const manager1 = new Manager(name, id, email, officeNumber1);
+            const manager2 = new Manager(name, id, email, officeNumber2);
             
             expect(typeof manager1.officeNumber).toEqual('number');
             expect(typeof manager2.officeNumber).toEqual('number');
