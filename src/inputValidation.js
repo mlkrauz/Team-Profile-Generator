@@ -8,11 +8,6 @@ function validateArgs(validatorObj, ...args) {
     //First, validate our validator and destructure the returned vars
     const {validatorLength, validatorKeyValuePairs} = metaValidator(validatorObj)
 
-    //are the args an array?
-    /* if (!Array.isArray(args)) {
-        throw new Error("Expected argument 'args' to be an Array.");
-    } */
-
     //Check if number of args is correct
     if (validatorLength !== args.length) {
         switch (validatorLength) {

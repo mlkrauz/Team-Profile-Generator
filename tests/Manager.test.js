@@ -7,16 +7,10 @@ describe('Manager', () => {
             const id = 1;
             const email = 'janeDoe@fakemail.com';
 
-            const cb1 = () => new Manager();
-            const cb2 = () => new Manager(name);
-            const cb3 = () => new Manager(name, id);
-            const cb4 = () => new Manager(name, id, email);
-            const err = new Error('Expected parameters: name, id, email, officeNumber.');
+            const cb1 = () => new Manager(name, id, email);
+            const err = new Error('Expected parameters: name, id, email, and officeNumber.');
 
             expect(cb1).toThrowError(err);
-            expect(cb2).toThrowError(err);
-            expect(cb3).toThrowError(err);
-            expect(cb4).toThrowError(err);
         });
 
         it("should accept strings that can be parsed to numbers for 'officeNumber'.", () => {
