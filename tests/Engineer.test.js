@@ -7,16 +7,10 @@ describe('Engineer', () => {
             const id = 1;
             const email = 'janeDoe@fakemail.com';
 
-            const cb1 = () => new Engineer();
-            const cb2 = () => new Engineer(name);
-            const cb3 = () => new Engineer(name, id);
-            const cb4 = () => new Engineer(name, id, email);
-            const err = new Error('Expected parameters: name, id, email, github.');
+            const cb1 = () => new Engineer(name, id, email);
+            const err = new Error('Expected parameters: name, id, email, and github.');
 
             expect(cb1).toThrowError(err);
-            expect(cb2).toThrowError(err);
-            expect(cb3).toThrowError(err);
-            expect(cb4).toThrowError(err);
         });
 
         it("should throw an error on incorrectly typed argument 'github'", () => {

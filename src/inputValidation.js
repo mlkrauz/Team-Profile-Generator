@@ -4,14 +4,14 @@
  * @param {Object} validatorObj an object whose keys are the arg names and whose values are the valid types, as strings.
  * @param {Array} args arguments to be validated
  */
-function validateArgs(validatorObj, args) {
+function validateArgs(validatorObj, ...args) {
     //First, validate our validator and destructure the returned vars
     const {validatorLength, validatorKeyValuePairs} = metaValidator(validatorObj)
 
     //are the args an array?
-    if (!Array.isArray(args)) {
+    /* if (!Array.isArray(args)) {
         throw new Error("Expected argument 'args' to be an Array.");
-    }
+    } */
 
     //Check if number of args is correct
     if (validatorLength !== args.length) {
