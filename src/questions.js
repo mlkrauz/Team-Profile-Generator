@@ -10,7 +10,7 @@ class questionBank {
      */
     promptManager() {
         let employeeQuestions = privatePromptEmployee('Manager');
-        
+
         return [
             ...employeeQuestions,
             {
@@ -77,7 +77,7 @@ class questionBank {
  */
 function privatePromptEmployee(role) {
     //validation
-    if (typeof role !== string) {
+    if (typeof role !== 'string') {
         throw new Error(`Expected argument 'role' to be a string.`)
     } 
 
@@ -98,6 +98,8 @@ function privatePromptEmployee(role) {
             message: `What is the email address of the ${role}?`
         }
     ]
+
+    return prompts
 }
 
-module.exports = questionBank
+module.exports = new questionBank
