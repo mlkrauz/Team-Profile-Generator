@@ -8,6 +8,12 @@ const pathToWriteTo = './public/index.html'
  * @param {Array} employeeArray Array of Employee objects
  */
 function writeHTML(employeeArray) {
+    //verify that what was passed in is an array
+    if (!Array.isArray(employeeArray)) {
+        throw new Error(`Expected 'employeeArray' to be an Array.`)
+    }
+
+    
 
 }
 
