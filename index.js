@@ -4,7 +4,6 @@ const questions = require('./src/questions');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const { inherits } = require("util");
 
 let employeeList = [];
 
