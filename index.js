@@ -1,9 +1,9 @@
 const inquirer = require("inquirer");
-const fs = require('fs');
 const questions = require('./src/questions');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const writeHTML = require('./src/writeHTML').writeHTML
 
 let employeeList = [];
 
@@ -33,7 +33,8 @@ async function initialize() {
         }
     }
 
-    console.log(employeeList)
+    //send our list of employees to be written to HTML
+    writeHTML(employeeList)
 }
 
 initialize()
